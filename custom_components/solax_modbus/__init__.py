@@ -133,7 +133,6 @@ from .const import (
     WRITE_MULTISINGLE_MODBUS,
     REG_HOLDING,
     REG_INPUT,
-    Endian
 )
 
 PLATFORMS = [Platform.BUTTON, Platform.NUMBER, Platform.SELECT, Platform.SENSOR, Platform.SWITCH]

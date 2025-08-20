@@ -12,16 +12,36 @@ from homeassistant.components.select import SelectEntityDescription
 from homeassistant.components.switch import SwitchEntityDescription
 from homeassistant.components.button import ButtonEntityDescription
 from homeassistant.helpers.entity import EntityCategory
+from enum import Enum
 try:
     from pymodbus.constants import Endian  # for pymodbus < 3.0
 except ImportError:
     try:        
         from pymodbus.payload import Endian    # for pymodbus >= 3.0
     except Exception:
-        class Endian():
-            BIG: str = "big"
-            LITTLE: str = "little"
-        
+        class Endian(str, Enum):
+            """An enumeration representing the various byte endianness.
+
+            .. attribute:: AUTO
+
+               This indicates that the byte order is chosen by the
+               current native environment.
+
+            .. attribute:: BIG
+
+               This indicates that the bytes are in big endian format
+
+            .. attribute:: LITTLE
+
+               This indicates that the bytes are in little endian format
+
+            .. note:: I am simply borrowing the format strings from the
+               python struct module for my convenience.
+            """
+
+            AUTO = "@"
+            BIG = ">"
+            LITTLE = "<"        
 from datetime import datetime, timedelta
 from dataclasses import dataclass, replace
 import pathlib

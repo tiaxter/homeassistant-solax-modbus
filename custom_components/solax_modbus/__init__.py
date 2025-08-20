@@ -76,7 +76,6 @@ _LOGGER = logging.getLogger(__name__)
 # else:
 #    Endian_BIG = Endian.BIG
 #    Endian_LITTLE = Endian.LITTLE
-from pymodbus.constants import Endian
 from pymodbus.exceptions import ConnectionException, ModbusIOException
 from .payload import BinaryPayloadBuilder, BinaryPayloadDecoder, Endian
 from pymodbus.framer import FramerType
@@ -134,6 +133,7 @@ from .const import (
     WRITE_MULTISINGLE_MODBUS,
     REG_HOLDING,
     REG_INPUT,
+    Endian
 )
 
 PLATFORMS = [Platform.BUTTON, Platform.NUMBER, Platform.SELECT, Platform.SENSOR, Platform.SWITCH]
